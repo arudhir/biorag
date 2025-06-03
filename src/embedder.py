@@ -1,12 +1,14 @@
-import os
 import json
-import numpy as np
-from typing import List, Dict, Optional
-import openai
-from tqdm import tqdm
+import os
 import time
 from pathlib import Path
+from typing import Dict, List, Optional
+
 import jsonlines
+import numpy as np
+import openai
+from tqdm import tqdm
+
 
 class EmbeddingManager:
     def __init__(self, model: str = "text-embedding-3-small", batch_size: int = 100):

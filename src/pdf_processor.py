@@ -1,10 +1,12 @@
-import fitz  # PyMuPDF
 import json
-import tiktoken
-from pathlib import Path
-from typing import List, Dict, Generator
-from tqdm import tqdm
 import re
+from pathlib import Path
+from typing import Dict, Generator
+
+import fitz  # PyMuPDF
+import tiktoken
+from tqdm import tqdm
+
 
 class PDFProcessor:
     def __init__(self, chunk_size: int = 800, overlap: int = 200):

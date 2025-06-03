@@ -1,9 +1,11 @@
-import numpy as np
-import faiss
 import json
-from typing import List, Dict, Optional
 from pathlib import Path
+from typing import Dict, List
+
+import faiss
 import jsonlines
+import numpy as np
+
 
 class VectorStore:
     def __init__(self, dimension: int = 1536):

@@ -1,9 +1,16 @@
-import os
 import json
-from typing import List, Dict, Optional, Union
+import os
+from typing import Dict
+
 import openai
-from .vector_store import VectorStore
-from .embedder import EmbeddingManager
+
+try:
+    from .embedder import EmbeddingManager
+    from .vector_store import VectorStore
+except ImportError:
+    from embedder import EmbeddingManager
+    from vector_store import VectorStore
+
 
 class BiologicalRAG:
     def __init__(self, vector_store: VectorStore, embedder: EmbeddingManager, top_k: int = 5):
@@ -184,6 +191,18 @@ Please provide a comprehensive answer based on the scientific evidence provided 
                 "confidence": 0.0
             }
     
+    async def query(self, question: str) -> Dict:
+        """Alias for forward method to maintain compatibility with bio-intelligence modules"""
+        return self.forward(question, structured_output=False)
+        
+    def retrieve_context(self, question: str) -> Dict:
+        """Retrieve context without full response generation"""
+        chunks = self.vector_store.search(question, k=self.top_k)
+        return {
+            "retrieved_chunks": chunks,
+            "citations": [{"source": chunk.get("source", ""), "page": chunk.get("page", 1)} for chunk in chunks]
+        }
+
     def format_response(self, response: Dict) -> str:
         """Format the response for display."""
         if response.get("error"):

@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 import argparse
-from pathlib import Path
-import sys
-import os
 import json
+import os
+import sys
+from pathlib import Path
 
 # Add src directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.embedder import EmbeddingManager
-from src.vector_store import VectorStore
 from src.rag_pipeline import BiologicalRAG
+from src.vector_store import VectorStore
+
 
 def main():
     parser = argparse.ArgumentParser(description="Query the biological RAG system")
