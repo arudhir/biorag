@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python scripts/01_extract_chunks.py:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(source:*)",
+      "Bash(uv venv:*)",
+      "Bash(uv pip install:*)",
+      "Bash(uv run:*)"
+    ],
+    "deny": []
+  },
+  "enableAllProjectMcpServers": false
+}
