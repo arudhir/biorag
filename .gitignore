@@ -2,3 +2,4 @@ papers
 data
 .env
 
+.DS_Store
